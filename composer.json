@@ -1,0 +1,32 @@
+{
+  "name": "kleedaisuki/world-cup-site",
+  "description": "世界杯专题站，基于 Yii2 Basic 的本地课程项目",
+  "type": "project",
+  "license": "GPL-3.0-only",
+  "require": {
+    "php": "^8.2",
+    "ext-ctype": "*",
+    "ext-mbstring": "*",
+    "ext-pdo_mysql": "*",
+    "yiisoft/yii2": "~2.0.54"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": ""
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    },
+    "sort-packages": true
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

@@ -1,0 +1,16 @@
+/vendor/
+/.local/
+/config/db.local.php
+/config/web.local.php
+/runtime/*
+!/runtime/.gitignore
+/web/assets/*
+!/web/assets/.gitignore
+/.idea/
+/.vscode/
+/.env
+/auth.json
+/composer.phar
+*.log
+.DS_Store
+Thumbs.db
