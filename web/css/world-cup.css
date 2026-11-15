@@ -1,0 +1,270 @@
+/*
+ * 用途：赛程赛果页面样式（W07），配色与排版遵循 docs/ui.md 的 Pitch notebook 模板。
+ * 作者：孙锘梵（2410868，成员3）
+ */
+
+.wc-page {
+    --wc-paper: #f6f7f2;
+    --wc-ink: #182b25;
+    --wc-muted: #4b5563;
+    --wc-green: #14532d;
+    --wc-demo-bg: #fef3c7;
+    --wc-demo-ink: #713f12;
+    --wc-line: #d8ded6;
+    max-width: 1120px;
+    margin-inline: auto;
+    padding: 40px 0 64px;
+    color: var(--wc-ink);
+}
+
+.wc-head { margin-bottom: 24px; }
+
+.wc-eyebrow {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: .16em;
+    color: var(--wc-muted);
+    text-transform: uppercase;
+}
+
+.wc-head h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    line-height: 1.25;
+    letter-spacing: -.02em;
+}
+
+.wc-note {
+    margin: 0;
+    color: var(--wc-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.wc-back { margin: 0 0 16px; font-size: 14px; }
+.wc-back a { color: var(--wc-green); }
+
+.wc-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 24px;
+}
+
+.wc-filter {
+    padding: 8px 18px;
+    border: 1px solid var(--wc-line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--wc-ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.wc-filter:hover { border-color: var(--wc-green); }
+
+.wc-filter.is-active {
+    background: var(--wc-green);
+    border-color: var(--wc-green);
+    color: #fff;
+}
+
+.wc-filter:focus-visible,
+.wc-button:focus-visible,
+.wc-pager-link:focus-visible {
+    outline: 3px solid #aa771d;
+    outline-offset: 3px;
+}
+
+.wc-list {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wc-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--wc-line);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.wc-card-main { min-width: 0; }
+
+.wc-meta {
+    margin: 0 0 6px;
+    color: var(--wc-muted);
+    font-size: 13px;
+}
+
+.wc-dot { margin: 0 6px; }
+
+.wc-teams {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 650;
+}
+
+.wc-score {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: 20px;
+    letter-spacing: .04em;
+}
+
+.wc-score.is-finished { color: var(--wc-green); }
+.wc-score.is-scheduled { color: var(--wc-muted); font-size: 15px; font-family: inherit; }
+
+.wc-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 0;
+}
+
+.wc-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid var(--wc-line);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--wc-muted);
+}
+
+.wc-badge-demo {
+    background: var(--wc-demo-bg);
+    border-color: #fde68a;
+    color: var(--wc-demo-ink);
+}
+
+.wc-badge-official {
+    background: #e7f0e5;
+    border-color: #cfdcc9;
+    color: var(--wc-green);
+}
+
+.wc-button {
+    display: inline-block;
+    padding: 9px 18px;
+    border: 1px solid var(--wc-green);
+    border-radius: 6px;
+    background: var(--wc-green);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.wc-button:hover { background: #0f3d21; }
+
+.wc-empty {
+    padding: 40px 24px;
+    border: 1px dashed var(--wc-line);
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+}
+
+.wc-empty-title { margin: 0 0 8px; font-size: 18px; font-weight: 650; }
+.wc-empty .wc-button { margin-top: 16px; }
+
+.wc-pager {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wc-pager-item { display: inline-block; }
+
+.wc-pager-link {
+    display: inline-block;
+    min-width: 38px;
+    padding: 7px 12px;
+    border: 1px solid var(--wc-line);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--wc-ink);
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.wc-pager-link:hover { border-color: var(--wc-green); }
+
+.wc-pager-item.active .wc-pager-link {
+    background: var(--wc-green);
+    border-color: var(--wc-green);
+    color: #fff;
+}
+
+.wc-pager-link.is-disabled { color: #9aa39c; background: var(--wc-paper); }
+
+.wc-scoreboard {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    margin: 8px 0 24px;
+    padding: 28px 24px;
+    border: 1px solid var(--wc-line);
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+}
+
+.wc-side { margin: 0; font-size: 20px; font-weight: 650; }
+
+.wc-big-score {
+    margin: 0;
+    font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: .02em;
+}
+
+.wc-big-score.is-finished { color: var(--wc-green); }
+.wc-big-score.is-scheduled { font-size: 20px; font-family: inherit; color: var(--wc-muted); }
+
+.wc-facts {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 16px;
+}
+
+.wc-fact {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--wc-line);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.wc-fact dt { color: var(--wc-muted); font-size: 14px; }
+.wc-fact dd { margin: 0; font-size: 15px; }
+
+@media (max-width: 640px) {
+    .wc-card { flex-direction: column; align-items: flex-start; }
+    .wc-scoreboard { grid-template-columns: 1fr; }
+    .wc-fact { grid-template-columns: 1fr; }
+}
