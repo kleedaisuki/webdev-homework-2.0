@@ -19,6 +19,7 @@
 | 视图 | `views/world-cup/index.php` | 列表页，含空态与分页 |
 | 视图 | `views/world-cup/view.php` | 详情页，含来源与演示标识 |
 | 样式 | `web/css/world-cup.css` | 按 `docs/ui.md` 的 Pitch notebook 配色与排版 |
+| 验证脚本 | `tests/w07-matches.php` | `php tests/w07-matches.php`，对运行中的站点做 17 项 HTTP 检查 |
 
 M/V/C 归属：**M** `models/Fixture.php`、**V** `views/world-cup/index.php`、**C** `controllers/WorldCupController.php`。
 
@@ -67,6 +68,7 @@ php yii serve 127.0.0.1 --port=8080
 | 非数字 | `GET /world-cup/matches/abc` | 404（路由正则不匹配） |
 | 草稿不可见 | `GET /world-cup/matches/5`（`demo-classroom`） | 404 |
 | 退出码 | `php yii seed/fixtures` | 0 |
+| 回归脚本 | `php tests/w07-matches.php` | 17 项检查全部 PASS，失败 0 项，退出码 0（含草稿详情 404 一项，脚本自行从 `config/db.local.php` 查 `demo-classroom` 的 id） |
 
 时区换算核对：`official-2026-001` 本地 `2026-06-11T13:00:00-06:00` → UTC `19:00` → 北京 `2026-06-12 03:00`，页面显示一致；`official-2026-003` 本地 `15:00-04:00` → 北京 `2026-06-13 03:00`。
 
@@ -95,7 +97,20 @@ php yii serve 127.0.0.1 --port=8080
 | `is_demo=0` 但缺来源 | 拒绝 |
 | `finished` 且 `0:0` | 接受，说明 0 不会被误判为空 |
 
-## 7. 同伴验收（待完成）
+## 7. 页面对照实验：空比分与 `0:0` 是两个状态
+
+样本 CSV 里没有「已发布但未开赛」和「`0:0` 完赛」的记录，所以这两条状态单独做一次对照实验：临时插入两条 `is_demo=1`、`publication_status='published'` 的记录，看页面渲染，验完立即删除，`fixture` 表回到 5 行，不写入 `data/seed/`。
+
+| 临时记录 | 关键字段 | 列表页 | 详情页 |
+| --- | --- | --- | --- |
+| `tmp-w07-scheduled` | `scheduled`、比分 NULL | 显示「未开赛」，不渲染比分 | 比分板显示「未开赛」，全页不含 `0 : 0` |
+| `tmp-w07-goalless` | `finished`、`0:0` | 显示「0 : 0」 | 显示「0 : 0」，带「演示数据」徽标 |
+
+同时验证：`?status=scheduled` 筛选下只出现 `tmp-w07-scheduled` 一场，`?status=finished` 下只出现 `tmp-w07-goalless` 这一条临时记录与 4 场官方样本。
+
+结论：空比分渲染为「未开赛」、真实 `0:0` 渲染为「0 : 0」，两者在视图层就是两条不同分支（`Fixture::displayScore()` 返回 `null` 还是 `"0 : 0"`），没有用 `empty()`、`?: 0` 之类的写法把它们混在一起。
+
+## 8. 同伴验收（待完成）
 
 请另一位组员在自己的机器上，用独立数据库执行第 3 节的命令，然后：
 
@@ -103,7 +118,7 @@ php yii serve 127.0.0.1 --port=8080
 2. 打开任一场详情，核对北京时间与来源链接；
 3. 把复现结果（成功/失败、截图）贴到本条 PR 的评论里。
 
-## 8. 已知边界与交接
+## 9. 已知边界与交接
 
 - 前台为只读，发布与改比分留给 W11（后台发赛果），本条不提供任何写入入口。
 - 首页摘要模块（取最近 3 场已完赛）属于 W09，本条只提供 `Fixture::findPublished()`，它已带 `publication_status` 过滤，W09 在其上追加 `match_status = finished` 与 `score_updated_at DESC` 即可。
