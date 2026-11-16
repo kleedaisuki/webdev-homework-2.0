@@ -1,0 +1,164 @@
+/*
+ * 用途：W11 赛事管理页面的样式，沿用站点配色，独立于 site.css，避免与其他后台任务互相覆盖。
+ * 作者：孙锘梵（2410868，成员3）
+ */
+
+.fixture-admin {
+    --fx-paper: #f6f7f2;
+    --fx-ink: #182b25;
+    --fx-green: #14532d;
+    --fx-muted: #536354;
+    --fx-line: #d7ddd2;
+    --fx-demo: #713f12;
+    --fx-demo-bg: #fef3c7;
+    max-width: 1120px;
+}
+
+.fx-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.fx-head h1,
+.fixture-admin h1 {
+    margin: 0;
+    font-size: 28px;
+    color: var(--fx-ink);
+}
+
+.fx-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+}
+
+.fx-table th,
+.fx-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--fx-line);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.fx-table th {
+    font-size: 13px;
+    font-weight: 650;
+    color: var(--fx-muted);
+    letter-spacing: .04em;
+    background: #eef2ea;
+    white-space: nowrap;
+}
+
+.fx-table tr:hover td {
+    background: #f9faf6;
+}
+
+.fx-muted {
+    color: var(--fx-muted);
+}
+
+.fx-form {
+    max-width: 680px;
+    margin-top: 24px;
+}
+
+.fx-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+}
+
+.fx-row .fx-field {
+    flex: 1 1 240px;
+}
+
+.fx-scores .fx-field {
+    flex: 0 1 140px;
+}
+
+.fx-field {
+    margin-block: 20px 0;
+}
+
+.fx-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--fx-ink);
+}
+
+.fx-field .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #7d8b80;
+    border-radius: 4px;
+    background: #ffffff;
+    font: inherit;
+}
+
+.fx-field .has-error .form-control,
+.fx-field.has-error .form-control {
+    border-color: #a52a2a;
+}
+
+.fx-field .help-block {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--fx-muted);
+}
+
+.fx-field .help-block-error {
+    color: #a52a2a;
+}
+
+.fx-hint {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: var(--fx-muted);
+}
+
+.fx-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.fx-publish {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--fx-line);
+}
+
+.fx-notice {
+    margin-bottom: 20px;
+}
+
+.fx-notice-item {
+    margin: 0;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.fx-notice-item.is-success {
+    background: #e8f2e6;
+    color: #14532d;
+}
+
+.fx-notice-item.is-error {
+    background: #fbeaea;
+    color: #a52a2a;
+}
+
+.fixture-admin .pagination {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
