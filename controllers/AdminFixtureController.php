@@ -31,6 +31,7 @@ class AdminFixtureController extends AdminBaseController
                     'create' => ['GET', 'POST'],
                     'update' => ['GET', 'POST'],
                     'publish' => ['POST'],
+                    'delete' => ['POST'],
                 ],
             ],
         ]);
@@ -106,6 +107,18 @@ class AdminFixtureController extends AdminBaseController
         }
 
         return $this->redirect(['update', 'id' => $fixture->id]);
+    }
+
+    /**
+     * 删除演示记录；正式样本返回 403。
+     */
+    public function actionDelete($id)
+    {
+        $fixture = $this->findDemoFixture($id);
+        $fixture->delete();
+        Yii::$app->session->setFlash('success', '演示比赛已删除。');
+
+        return $this->redirect(['index']);
     }
 
     /**

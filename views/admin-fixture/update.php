@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 用途：W11 编辑演示比赛页面，保存与发布是两个独立动作。
+ * 用途：W11 编辑演示比赛页面，保存、发布与删除是三个独立动作。
  * 作者：孙锘梵（2410868，成员3）
  */
 
@@ -25,9 +25,18 @@ $this->registerCssFile('@web/css/admin-fixture.css');
         'venues' => $venues,
     ]) ?>
 
-    <?php if ($fixture->publication_status === Fixture::PUBLICATION_DRAFT): ?>
-        <?= Html::beginForm(['admin-fixture/publish', 'id' => $fixture->id], 'post', ['class' => 'fx-publish']) ?>
-        <?= Html::submitButton('发布', ['class' => 'button']) ?>
+    <div class="fx-footer">
+        <?php if ($fixture->publication_status === Fixture::PUBLICATION_DRAFT): ?>
+            <?= Html::beginForm(['admin-fixture/publish', 'id' => $fixture->id], 'post', ['class' => 'fx-publish']) ?>
+            <?= Html::submitButton('发布', ['class' => 'button']) ?>
+            <?= Html::endForm() ?>
+        <?php endif; ?>
+
+        <?= Html::beginForm(['admin-fixture/delete', 'id' => $fixture->id], 'post', ['class' => 'fx-delete']) ?>
+        <?= Html::submitButton('删除', [
+            'class' => 'button-link is-danger',
+            'onclick' => "return confirm('确定删除这条演示比赛？');",
+        ]) ?>
         <?= Html::endForm() ?>
-    <?php endif; ?>
+    </div>
 </section>

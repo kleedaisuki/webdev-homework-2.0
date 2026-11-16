@@ -29,6 +29,7 @@ return [
     'admin/matches/create' => 'admin-fixture/create',
     'admin/matches/<id:[1-9][0-9]*>/edit' => 'admin-fixture/update',
     'admin/matches/<id:[1-9][0-9]*>/publish' => 'admin-fixture/publish',
+    'admin/matches/<id:[1-9][0-9]*>/delete' => 'admin-fixture/delete',
     'admin/messages' => 'admin-guestbook/index',
     'admin/messages/<id:[1-9][0-9]*>/review' => 'admin-guestbook/review',
 ];

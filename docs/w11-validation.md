@@ -11,6 +11,7 @@
 | C｜后台赛事管理 | `controllers/AdminFixtureController.php` |
 | 样式 | `web/css/admin-fixture.css`（独立文件，不改 `site.css` 与 `views/admin/`） |
 | 回归脚本 | `tests/w11-fixtures.php` |
+| 删除演示记录（范围外补充） | `AdminFixtureController::actionDelete()` + `views/admin-fixture/update.php` 的删除表单 |
 
 状态机：`draft + scheduled`（游客不可见）→ 发布 → `published + scheduled`（前台显示「未开赛」）→ 录比分 → `published + finished`（`0:0` 合法）。
 
@@ -42,7 +43,8 @@ php yii serve 127.0.0.1 --port=8080
 | --- | --- |
 | `php -l` 8 个新增 PHP 文件 | 全部通过 |
 | `php yii migrate --interactive=0` | `m261115_000001_create_account_table` applied |
-| `php tests/w11-fixtures.php` | **34 项全 PASS**，退出码 0 |
+| `php tests/w11-fixtures.php` | **40 项全 PASS**，退出码 0 |
+| 删除演示记录 | `POST /admin/matches/{id}/delete` → 303 到列表且行消失；`GET` 同路径 → 405；官方样本 → 403 |
 | 后台入口未登录访问 | `GET /admin/matches` → 302 到 `/admin/login` |
 | 正式样本写操作 | `GET /admin/matches/1/edit` → 403；`POST …/publish` → 403 |
 | 不存在的比赛 | `/admin/matches/999999/edit` → 404 |
@@ -61,6 +63,7 @@ php yii serve 127.0.0.1 --port=8080
 6. 只改小组不改比分：`score_updated_at` 保持不变。
 7. 拒绝路径：已完赛缺比分、未开赛带比分、主队=客队，均返回 200 并显示错误、不落库。
 8. 正式样本的编辑与发布均 403；未知 id 404。
+9. 删除演示记录：`POST …/delete` 后行消失、前台详情 404；`GET …/delete` → 405；官方样本 → 403（官方只读这条不因新增删除而放松）。
 
 ## 6. 与契约和线框的对照
 
@@ -82,6 +85,7 @@ php yii serve 127.0.0.1 --port=8080
 ## 8. 边界与交接
 
 - 不含：实时比分、积分榜、淘汰赛阶段（`stage` 固定 `group`）、团队资料与留言审核（W10/W12）。
+- 后台删除演示记录不在 W11 原始范围内，是按使用者反馈补的；官方样本仍严格只读（服务端 403）。
 - 状态图请 W14 引用 `draft/scheduled → published/scheduled → published/finished` 三条边。
 - W15 用户手册的后台操作顺序：登录 → 赛事管理 → 新建演示比赛 → 保存 → 发布 → 前台按状态筛选查看。
 - W21 演示脚本可复用同一顺序，录比分时展示 `0:0` 与「未开赛」的差别。

@@ -216,6 +216,16 @@ try {
     check($response['status'] === 403, 'official sample cannot be published');
     $response = request('/admin/matches/999999/edit');
     check($response['status'] === 404, 'unknown fixture returns 404');
+
+    $response = request('/admin/matches/' . $fixtureId . '/delete');
+    check($response['status'] === 405, 'delete requires POST');
+    $response = request('/admin/matches/' . $official->id . '/delete', 'POST', ['_csrf' => csrf(request('/admin/matches'))]);
+    check($response['status'] === 403, 'official sample cannot be deleted');
+    $response = request('/admin/matches/' . $fixtureId . '/delete', 'POST', ['_csrf' => csrf(request('/admin/matches'))]);
+    check(in_array($response['status'], [302, 303], true), 'deleting a demo redirects to the index');
+    check(Fixture::findOne($fixtureId) === null, 'deleted demo is removed from the database');
+    $response = request('/world-cup/matches/' . $fixtureId);
+    check($response['status'] === 404, 'deleted demo is not publicly visible');
 } finally {
     if ($fixtureId !== null) {
         Fixture::deleteAll(['id' => $fixtureId]);

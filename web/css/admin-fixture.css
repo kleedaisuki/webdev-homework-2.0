@@ -130,10 +130,28 @@
     margin-top: 32px;
 }
 
-.fx-publish {
-    margin-top: 24px;
+.fx-footer {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    max-width: 680px;
+    margin-top: 32px;
     padding-top: 24px;
     border-top: 1px solid var(--fx-line);
+}
+
+.fx-publish,
+.fx-delete {
+    margin: 0;
+}
+
+.fx-delete {
+    margin-left: auto;
+}
+
+.fixture-admin .fx-delete .button-link {
+    color: #a52a2a;
+    font-size: 14px;
 }
 
 .fx-notice {
