@@ -18,6 +18,7 @@ $allNamesArePlaceholders = $team->members !== [] && array_reduce($team->members,
     <header class="team-heading">
         <h1><?= Html::encode($team->name) ?></h1>
         <p class="team-summary"><?= nl2br(Html::encode($team->summary), false) ?></p>
+        <?= Html::a('团队与个人作业下载', ['/download/index'], ['class' => 'text-link']) ?>
     </header>
 
     <section class="team-section" aria-labelledby="members-heading">

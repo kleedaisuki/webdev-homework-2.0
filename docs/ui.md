@@ -213,6 +213,10 @@ on failure. There is no member add/delete or team-slug editor in this scope.
   redirects to a `提交成功，等待审核` notice. Pending/rejected messages stay private.
 - `/downloads`: separate `团队作业` / `个人作业` lists with file names and download
   links; show a useful empty state when no coursework file exists.
+  The shared navigation and team page both link here. Place team documents
+  (`pdf`, `doc`, `docx`, `ppt`, `pptx`) in `data/team/` and personal ZIPs in
+  `data/personal/`; no database or list update is needed. Keep those directories
+  outside the web root; Yii sends downloads using their original file names.
 - `/admin/login`: username/password labels, one generic credential error, then
   `/admin` with links to the implemented management sections.
 

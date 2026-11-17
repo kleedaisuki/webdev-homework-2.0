@@ -11,6 +11,7 @@ return yii\helpers\ArrayHelper::merge(require __DIR__ . '/common.php', [
         'serve' => [
             'class' => yii\console\controllers\ServeController::class,
             'docroot' => '@app/web',
+            'router' => '@app/config/dev-router.php',
             'port' => 8080,
         ],
     ],

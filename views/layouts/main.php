@@ -15,6 +15,7 @@ $navigation = [
     ['团队成员', ['team/index'], str_starts_with($route, 'team/')],
     ['项目经历', ['site/project'], $route === 'site/project'],
     ['世界杯专题', ['world-cup/index'], str_starts_with($route, 'world-cup/') || str_starts_with($route, 'world-cup-hub/')],
+    ['作业下载', ['download/index'], $route === 'download/index'],
 ];
 ?>
 <?php $this->beginPage() ?>
