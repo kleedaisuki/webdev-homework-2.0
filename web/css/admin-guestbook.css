@@ -1,0 +1,19 @@
+.review-page { max-width: 720px; margin-inline: auto; }
+.review-tabs, .review-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.review-tabs { margin-block: 16px 24px; }
+.review-tabs a { padding: 8px 12px; border: 1px solid currentColor; border-radius: 4px; }
+.review-tabs [aria-current="page"] { background: #14532d; color: white; }
+.review-card {
+    background: white; border: 1px solid #d9ded6; border-radius: 6px;
+    padding: clamp(16px, 4vw, 24px); margin-bottom: 16px; overflow-wrap: anywhere;
+}
+.review-card header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.review-card time { color: #526058; font-size: .875rem; }
+.review-form textarea {
+    display: block; width: 100%; padding: 8px; margin-block: 6px 12px;
+    border: 1px solid #68776e; border-radius: 4px; font: inherit; resize: vertical;
+}
+.review-form .review-reject { background: white; color: #922c27; box-shadow: inset 0 0 0 1px currentColor; }
+.review-form .error-summary { color: #922c27; }
+.review-page .pagination { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; list-style: none; }
+.review-page .pagination .active a { font-weight: 700; }
