@@ -6,7 +6,7 @@ $this->title = '编辑成员资料';
 $this->registerCssFile('@web/css/profile-editor.css');
 ?>
 <section class="profile-editor">
-    <div class="editor-breadcrumb"><?= Html::a('团队资料', ['admin-team/update']) ?><span>/</span><span>成员资料</span></div>
+    <div class="editor-breadcrumb"><?= Html::a('管理工作台', ['admin/index']) ?><span>/</span><?= Html::a('团队资料', ['admin-team/update']) ?><span>/</span><span>成员资料</span></div>
     <header class="editor-heading"><div><h1>成员资料</h1><p><?= Html::encode($member->display_name) ?></p></div><?= Html::a('查看公开页面 ↗', ['team/member', 'id' => $member->id], ['class' => 'editor-preview', 'target' => '_blank', 'rel' => 'noopener']) ?></header>
     <?= $this->render('../profile-editor/_feedback', ['editor' => $editor]) ?>
     <?php $form = ActiveForm::begin(['id' => 'member-editor', 'enableClientValidation' => false]); ?>

@@ -179,6 +179,16 @@ a:hover { text-decoration-thickness: 2px; }
 .wc-page .wc-badge-official { background: #edf2ff; border-color: #d0dcff; color: #35529a; }
 .auth-page { border-color: var(--line); }
 .admin-entry-list { display:flex; flex-wrap:wrap; align-items:center; gap:24px; margin-block:32px; }
+.admin-breadcrumb { display:flex; flex-wrap:wrap; align-items:center; gap:10px; color:#738097; font-size:12px; margin-bottom:20px; }
+.admin-breadcrumb a { color:#3456b4; text-decoration:none; }
+.admin-page-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:12px; }
+.admin-page-head h1 { margin:0; }
+.admin-head-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+.admin-preview-link { display:inline-block; padding:10px 14px; border:1px solid #cbd5e8; border-radius:5px; background:#fff; color:#2148cb; font-size:13px; font-weight:600; text-decoration:none; white-space:nowrap; }
+.admin-preview-link:hover { border-color:#2148cb; text-decoration:none; }
+.admin-public-links { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; padding-top:24px; border-top:1px solid var(--line); }
+.admin-public-label { font-size:12px; font-weight:650; color:var(--muted); letter-spacing:.04em; }
+.admin-public-links .text-link { color:#2c50bd; }
 .button { background: #2148cb; }
 @media (max-width: 1050px) {
     .site-header, .container, .site-footer { width: calc(100% - 48px); }

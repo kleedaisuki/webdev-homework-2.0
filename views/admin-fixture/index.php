@@ -1,8 +1,8 @@
 <?php
 
 /**
- * 用途：W11 赛事管理列表，正式样本与演示记录并列展示，演示行可以进入编辑。
- * 作者：孙锘梵（2410868，成员3）
+ * 用途：W11 赛事管理列表，正式样本与演示记录并列展示，演示行可以进入编辑；W17 补充后台路径与公开赛程入口。
+ * 作者：孙锘梵（2410868，成员3）；W17 接线（Clash727）
  */
 
 use app\models\Fixture;
@@ -13,13 +13,22 @@ $this->title = '赛事管理';
 $this->registerCssFile('@web/css/admin-fixture.css');
 ?>
 <section class="admin-page fixture-admin">
+    <nav class="admin-breadcrumb" aria-label="后台路径">
+        <?= Html::a('管理工作台', ['admin/index']) ?>
+        <span aria-hidden="true">/</span>
+        <span>赛事管理</span>
+    </nav>
     <div class="fx-head">
         <h1>赛事管理</h1>
-        <?= Html::a('新建演示比赛', ['admin-fixture/create'], ['class' => 'button']) ?>
+        <div class="admin-head-actions">
+            <?= Html::a('查看公开赛程 ↗', ['world-cup/index'], ['class' => 'admin-preview-link', 'target' => '_blank', 'rel' => 'noopener noreferrer']) ?>
+            <?= Html::a('新建演示比赛', ['admin-fixture/create'], ['class' => 'button']) ?>
+        </div>
     </div>
 
     <?= $this->render('_notice') ?>
 
+    <div class="fx-table-wrap">
     <table class="fx-table">
         <thead>
         <tr>
@@ -50,6 +59,7 @@ $this->registerCssFile('@web/css/admin-fixture.css');
         <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
 
     <?= LinkPager::widget(['pagination' => $pagination]) ?>
 </section>
